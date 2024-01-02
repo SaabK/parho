@@ -5,6 +5,8 @@ export default function HomePage() {
         <>
             <h1>Hello, World</h1>
             <Button>Hey</Button>
+            <label htmlFor="myfile">Select a file:</label>
+            <input type="file" id="myfile" name="myfile" />
         </>
     );
 }
