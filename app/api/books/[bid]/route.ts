@@ -39,13 +39,50 @@ export async function PATCH(req: NextRequest, { params }: { params: any }) {
     const { bid } = params;
     const body = await req.json();
 
+    // The difference here is that I need to check if the body contains the category id and then if it does, I need to remove the object id from previous category and add it to the new category
+
+    const Category = mongoose.model("Category");
+
     try {
+        // const thatOneBook = await Book.findById(bid);
         const thatOneBook = await Book.findByIdAndUpdate(bid, body);
+
         if (!thatOneBook)
             return NextResponse.json(
                 { message: "Couldn't find that product" },
                 { status: 404 }
             );
+
+        if (body.hasOwnProperty("category")) {
+            const previousCategory = await Category.findById(
+                thatOneBook.category
+            );
+
+            if (!previousCategory)
+                return console.log(
+                    "That one category doesn't exist and this is a really weird error"
+                );
+
+            // Removing the object id that exists in the previous category
+
+            previousCategory.books = previousCategory.books.filter(
+                (id: string) => id.toString() !== thatOneBook._id.toString()
+            );
+
+            await previousCategory.save();
+
+            // Now add the object id to the new category:
+
+            const newCategory = await Category.findById(body.category);
+
+            if (!newCategory)
+                return console.log(
+                    "That one category doesn't exist and this is a really weird error"
+                );
+
+            newCategory.books.push(thatOneBook._id);
+            await newCategory.save();
+        }
 
         return NextResponse.json(
             {

@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     try {
         const newBook: IBook = await Book.create(body);
 
-        const Category = mongoose.model("Category");
+        // const Category = mongoose.model("Category");
         const thatOneCategory = await Category.findById(newBook.category);
 
         if (!thatOneCategory)
