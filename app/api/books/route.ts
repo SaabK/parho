@@ -4,6 +4,10 @@ import { NextResponse } from "next/server";
 
 connectToMongo();
 
+function generateRandomNumber(MIN: number, MAX: number) {
+    return Math.floor(Math.random() * (MAX - MIN) + MIN);
+}
+
 export async function GET() {
     const books = await Book.find();
 
@@ -19,7 +23,7 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-    const data = await req.json();
+    const data: never[] = [];
 
     return NextResponse.json({
         data,
