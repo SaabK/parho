@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { connectToMongo } from "@/lib/db";
 
 const poppins = Poppins({
     subsets: ["latin"],

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Category from "./Category";
 
 export const bookSchema = new mongoose.Schema({
     name: String,
@@ -6,7 +7,11 @@ export const bookSchema = new mongoose.Schema({
     price: Number,
     stock: Number,
     ratings: Number,
-    category: String,
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category",
+        required: true,
+    },
     image: String,
     author: {
         name: String,
