@@ -60,7 +60,7 @@ export async function PATCH(req: NextRequest, { params }: { params: any }) {
 
             if (!previousCategory)
                 return console.log(
-                    "That one category doesn't exist and this is a really weird error"
+                    "The old category doesn't exist and this is a really weird error"
                 );
 
             // Removing the object id that exists in the previous category
@@ -77,7 +77,7 @@ export async function PATCH(req: NextRequest, { params }: { params: any }) {
 
             if (!newCategory)
                 return console.log(
-                    "That one category doesn't exist and this is a really weird error"
+                    "The new category doesn't exist and this is a really weird error"
                 );
 
             newCategory.books.push(thatOneBook._id);
