@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { connectToMongo } from "@/lib/db";
+import Navbar from "./_components/Navbar";
+import Footer from "./_components/Footer";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -43,8 +44,17 @@ export default function RootLayout({
                 />
                 <link rel="manifest" href="/site.webmanifest" />
             </head>
-            <body className={cn("antialiased", poppins.className)}>
-                {children}
+            <body
+                className={cn(
+                    "antialiased min-h-screen flex flex-col justify-between",
+                    poppins.className
+                )}
+            >
+                <div>
+                    <Navbar />
+                    {children}
+                </div>
+                <Footer />
             </body>
         </html>
     );

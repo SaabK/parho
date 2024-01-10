@@ -1,12 +1,11 @@
-import { Button } from "@/components/ui/button";
+import Hero from "../_components/Hero";
 
 export default function HomePage() {
+    // IDEA: Make a carousel type section in hero section where books on sale will appear after every 4-5 seconds. And on the left it'll say something about sale xyz
+
     return (
-        <>
-            <h1>Hello, World</h1>
-            <Button>Hey</Button>
-            <label htmlFor="myfile">Select a file:</label>
-            <input type="file" id="myfile" name="myfile" />
-        </>
+        <main>
+            <Hero />
+        </main>
     );
 }
