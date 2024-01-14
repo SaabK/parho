@@ -6,7 +6,6 @@ connectToMongo();
 
 export async function GET() {
     const books = await Book.find().skip(20).limit(7);
-    console.log(books.length);
 
     return NextResponse.json(
         {

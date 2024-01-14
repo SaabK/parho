@@ -1,9 +1,24 @@
 import React from "react";
+import Categories from "./Categories";
+import Image from "next/image";
+import BookShowcase from "./BookShowcase";
+import { getBooksOnSale } from "@/lib/requests";
 
-export default function Hero() {
+export default async function Hero() {
+    const { books: booksOnSale } = await getBooksOnSale();
+
     return (
-        <div className="w-full h-80" id="hero">
-            Hero
-        </div>
+        <section className="" id="hero">
+            <Categories />
+            <div className="w-full h-[510px] bg-gray-200 relative">
+                <Image
+                    src="/flash_sale.jpg"
+                    alt=""
+                    fill
+                    className="object-cover w-full h-full"
+                />
+                <BookShowcase books={booksOnSale} />
+            </div>
+        </section>
     );
 }

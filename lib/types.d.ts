@@ -1,19 +1,20 @@
 export interface IBook {
-    _id: String;
-    name: String;
-    description: String;
-    price: Number;
-    stock: Number;
-    ratings: Number;
-    category: String;
-    image: String;
+    _id: string;
+    name: string;
+    description: string;
+    price: number;
+    stock: number;
+    ratings: number;
+    category: string;
+    image: string;
     author: {
-        name: String;
-        about: String;
+        name: string;
+        about: string;
     };
 }
 
 export interface ICategory {
-    name: String;
+    _id: string;
+    name: string;
     books: Book[];
 }
